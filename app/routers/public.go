@@ -8,6 +8,6 @@ import (
 
 //SetUserRoutes defines the public routes
 func SetWebRoutes(router *mux.Router) *mux.Router {
-	router.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("web/"))))
+	router.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("public/"))))
 	return router
 }
