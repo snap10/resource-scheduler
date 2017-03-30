@@ -1,10 +1,6 @@
 package models
 
-import (
-	"time"
-
-	"gopkg.in/mgo.v2/bson"
-)
+import "gopkg.in/mgo.v2/bson"
 
 type (
 	User struct {
@@ -15,20 +11,19 @@ type (
 		Password     string        `json:"password,omitempty"`
 		HashPassword []byte        `json:"hashpassword,omitempty"`
 	}
-	Task struct {
+	Resource struct {
+		Id    bson.ObjectId `bson:"_id,omitempty" json:"id"`
+		Name  string        `json:"name"`
+		Users []User        `json:"users"`
+	}
+	Reservation struct {
 		Id          bson.ObjectId `bson:"_id,omitempty" json:"id"`
-		CreatedBy   string        `json:"createdby"`
+		UserID      bson.ObjectId `bson:"userid" json:"userid"`
+		ResourceID  bson.ObjectId `bson:"resourceid" json:"resourceid"`
 		Name        string        `json:"name"`
 		Description string        `json:"description"`
-		CreatedOn   time.Time     `json:"createdon,omitempty"`
-		Due         time.Time     `json:"due,omitempty"`
-		Status      string        `json:"status,omitempty"`
-		Tags        []string      `json:"tags,omitempty"`
-	}
-	TaskNote struct {
-		Id          bson.ObjectId `bson:"_id,omitempty" json:"id"`
-		TaskId      bson.ObjectId `json:"taskid"`
-		Description string        `json:"description"`
-		CreatedOn   time.Time     `json:"createdon,omitempty"`
+		Date        int64         `json:"date"`
+		Duration    int32         `json:"duration"`
+		AllDay      bool          `json:"all_day"`
 	}
 )

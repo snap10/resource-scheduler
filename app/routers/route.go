@@ -10,5 +10,7 @@ func InitRoutes() *mux.Router {
 	router = SetUserRoutes(router)
 	// Routes for the Task entity
 	router = SetResourceRoutes(router)
+	// Routes for weg-app... setup last to prreservation errors√
+	router = SetWebRoutes(router)
 	return router
 }

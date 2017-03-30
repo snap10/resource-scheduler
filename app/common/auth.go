@@ -68,7 +68,7 @@ func GenerateJWT(name, role string) (string, error) {
 		name,
 		role,
 		jwt.StandardClaims{
-			ExpiresAt: time.Now().Add(time.Minute * 20).Unix(),
+			ExpiresAt: time.Now().Add(time.Minute * 120).Unix(),
 			Issuer:    "admin",
 		},
 	}
@@ -111,13 +111,17 @@ func Authorize(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
 			default:
 				DisplayAppError(w,
 					err,
-					"Error while parsing the Access Token!",
+					"Error while parsing the Access Token, Validation Error!",
 					500,
 				)
 				return
 			}
 
 		default:
+			if err.Error() == "no token present in request" {
+				DisplayAppError(w, err, "No token present", 401)
+				return
+			}
 			DisplayAppError(w,
 				err,
 				"Error while parsing Access Token!",

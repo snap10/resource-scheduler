@@ -1,2 +1,6 @@
 ERROR: 2017/03/26 16:55:26 utils.go:32: AppError]: EOF
 ERROR: 2017/03/26 16:55:36 utils.go:32: AppError]: EOF
+ERROR: 2017/03/30 22:12:52 utils.go:32: AppError]: no token present in request
+ERROR: 2017/03/30 22:16:13 utils.go:32: AppError]: no token present in request
+ERROR: 2017/03/30 22:18:15 utils.go:32: AppError]: no token present in request
+ERROR: 2017/03/30 22:21:35 utils.go:32: AppError]: no token present in request
