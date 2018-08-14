@@ -1,0 +1,3 @@
+[submodule "public/resource-scheduler-frontend"]
+	path = public/resource-scheduler-frontend
+	url = https://github.com/snap10/resource-scheduler-frontend
